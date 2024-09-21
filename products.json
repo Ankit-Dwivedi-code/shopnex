@@ -1,0 +1,50 @@
+[
+    {
+        "id" : 1,
+        "name" : "Air Jordan 1 Retro",
+        "price": 16147.00,
+        "image" : "images/p1.jpeg"
+    },
+    {
+        "id" : 2,
+        "name" : "Nike Court Vision",
+        "price": 5407.00,
+        "image" : "images/p2.jpeg"
+    },
+    {
+        "id" : 3,
+        "name" : "Reebok low-top",
+        "price": 2999.00,
+        "image" : "images/p3.jpeg"
+    },
+    {
+        "id" : 4,
+        "name" : "Air Jordan 1 Mid SE",
+        "price": 11677.00,
+        "image" : "images/p4.jpeg"
+    },
+    {
+        "id" : 5,
+        "name" : "Adidas Step-n-pace",
+        "price": 3179.50,
+        "image" : "images/p5.jpeg"
+    },
+    {
+        "id" : 6,
+        "name" : "Puma Sports shoes",
+        "price": 2999.00,
+        "image" : "images/p6.jpeg"
+    },
+    {
+        "id" : 7,
+        "name" : "Nike Dunk shoes",
+        "price": 10795.00,
+        "image" : "images/p7.jpeg"
+    },
+    {
+        "id" : 8,
+        "name" : "Adidas Superstar",
+        "price": 6299.50,
+        "image" : "images/p8.jpeg"
+    }
+]

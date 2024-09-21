@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <section class="bg-white dark:bg- pt-24">
+        <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+            <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-center ">Contact Us</h2>
+            <p class="mb-8 lg:mb-16 font-light text-center text-gray-800 dark:text-gray-400 sm:text-xl">We are here to help with any questions .</p>
+            <form action="#" id="contact-form" class="space-y-8">
+                <div>
+                    <label for="email" class="block mb-2 text-sm font-medium ">Your email</label>
+                    <input type="email" id="email" class="shadow-sm bg-gray-50 border border-gray-300 text- text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 " placeholder="name@gmail.com" required />
+                </div>
+                
+                <div class="sm:col-span-2">
+                    <label for="message" class="block mb-2 text-sm font-medium ">Your message</label>
+                    <textarea id="message"  class="block p-2.5 w-full text-sm  rounded-lg shadow-sm  focus:ring-primary-500 focus:border-primary-500   dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
+                </div>
+                <button  borderRadius="1.75rem" type="submit" class="bg-white  text-black ">Send message</button>
+            </form>
+        </div>
+      </section>
+      <script src="contact.js"></script>
+</body>
+</html>
