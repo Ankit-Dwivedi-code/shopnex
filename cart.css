@@ -195,3 +195,9 @@ body .showCart .container{
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+
+button.addCart[disabled] {
+    background-color: grey;
+    cursor: not-allowed;
+}

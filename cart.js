@@ -8,73 +8,77 @@ let iconCartSpan = document.querySelector('.icon-cart span');
 let listProducts = [];
 let carts = [];
 
-iconCart.addEventListener('click', ()=>{
+iconCart.addEventListener('click', () => {
     body.classList.toggle('showCart')
 })
 
-closeCart.addEventListener('click', ()=>{
+closeCart.addEventListener('click', () => {
     body.classList.toggle('showCart')
 })
 
-const addDataToHtml = () =>{
+const addDataToHtml = () => {
     listProductHtml.innerHTML = '';
     if (listProducts.length > 0) {
-        listProducts.forEach(product =>{
+        listProducts.forEach(product => {
             let newProduct = document.createElement('div');
-            newProduct.classList.add('item'); 
-            newProduct.dataset.id = product.id;           
+            newProduct.classList.add('item');
+            newProduct.dataset.id = product.id;
+            let isInCart = carts.some(cartItem => cartItem.product_id == product.id); // Check if the product is in the cart
+            
             newProduct.innerHTML = `
             <img src="${product.image}" alt="">
                 <h2>${product.name}</h2>
                 <div class="price">₹${product.price}</div>
-                <button class="addCart">
-                    Add to cart
+                <button class="addCart" ${isInCart ? 'disabled' : ''}>
+                    ${isInCart ? 'Added to Cart' : 'Add to Cart'}
                 </button>
                 `;
 
             listProductHtml.appendChild(newProduct);
-
-        })
+        });
     }
 }
 
-listProductHtml.addEventListener('click', (event)=>{
-        let positionClick = event.target;
-        if (positionClick.classList.contains('addCart')) {
-            let product_id = positionClick.parentElement.dataset.id;
-            addToCart(product_id);
-        }
+listProductHtml.addEventListener('click', (event) => {
+    let positionClick = event.target;
+    if (positionClick.classList.contains('addCart')) {
+        let product_id = positionClick.parentElement.dataset.id;
+        addToCart(product_id);
+    }
 })
 
-const addToCart = (product_id) =>{
-        let positionThisProductInCart = carts.findIndex((value) =>{
-            return value.product_id == product_id
-        })
-        if (carts.length <= 0) {
-            carts = [{
-                product_id: product_id,
-                quantity : 1
-            }]
-        }else if(positionThisProductInCart < 0){
-            carts.push({
-                product_id : product_id,
-                quantity : 1
-            })
-        }else{
-            carts[positionThisProductInCart].quantity = carts[positionThisProductInCart].quantity + 1;
-        }
-        addCartToHtml()
-        addCartToMemory();
+const addToCart = (product_id) => {
+    let positionThisProductInCart = carts.findIndex((value) => {
+        return value.product_id == product_id;
+    });
+    
+    // Check if the product is already in the cart
+    if (carts.length <= 0) {
+        carts = [{
+            product_id: product_id,
+            quantity: 1
+        }];
+    } else if (positionThisProductInCart < 0) {
+        carts.push({
+            product_id: product_id,
+            quantity: 1
+        });
+    } else {
+        carts[positionThisProductInCart].quantity += 1;
+    }
+    
+    // Update the button to show 'Added to Cart'
+    let productButton = document.querySelector(`.item[data-id="${product_id}"] .addCart`);
+    productButton.innerText = 'Added to Cart';
+    productButton.disabled = true; // Disable further clicks
+    
+    addCartToHtml();
+    // localStorage is removed here
 
-        console.log(carts);
-        
+    console.log(carts);
 }
 
-const addCartToMemory =() =>{
-    localStorage.setItem('cart', JSON.stringify(carts))
-}
-
-const addCartToHtml = ()=>{
+const addCartToHtml = () => {
     listCartHtml.innerHTML = '';
     let totalQuantity = 0;
     if (carts.length > 0) {
@@ -93,7 +97,7 @@ const addCartToHtml = ()=>{
                     ${info.name}
                 </div>
                 <div class="totalPrice">
-                    ${info.price * cart.quantity}
+                    ₹${info.price * cart.quantity}
                 </div>
                 <div class="quantity">
                     <span class="minus"><i class="ri-subtract-line"></i></span>
@@ -110,11 +114,11 @@ const addCartToHtml = ()=>{
 listCartHtml.addEventListener('click', (event) => {
     let positionClick = event.target;
     let itemElement = positionClick.closest('.item'); // Correctly finding the parent with class "item"
-    
+
     if (itemElement) {
         let product_id = itemElement.dataset.id;
 
-        if (positionClick.closest('.minus')) { 
+        if (positionClick.closest('.minus')) {
             changeQuantity(product_id, 'minus');
         } else if (positionClick.closest('.plus')) {
             changeQuantity(product_id, 'plus');
@@ -122,46 +126,36 @@ listCartHtml.addEventListener('click', (event) => {
     }
 });
 
-
-const changeQuantity = (product_id, type) =>{
+const changeQuantity = (product_id, type) => {
     let positionItemInCart = carts.findIndex((value) => value.product_id == product_id)
     if (positionItemInCart >= 0) {
         switch (type) {
             case 'plus':
                 carts[positionItemInCart].quantity = carts[positionItemInCart].quantity + 1;
                 break;
-        
+
             default:
                 let valueChange = carts[positionItemInCart].quantity - 1;
                 if (valueChange > 0) {
                     carts[positionItemInCart].quantity = valueChange;
-                }else{
+                } else {
                     carts.splice(positionItemInCart, 1);
                 }
                 break;
         }
     }
-    addCartToMemory();
+    // localStorage is removed here as well
     addCartToHtml();
 }
 
-const initApp = () =>{
+const initApp = () => {
     //get product
     fetch('products.json')
-    .then(response => response.json())
-    .then(data =>{
-        listProducts = data
-        // console.log(listProducts);
-        addDataToHtml();
-
-        //get cart from memory
-        if (localStorage.getItem('cart')) {
-            carts = JSON.parse(localStorage.getItem('cart'));
-            addCartToHtml();
-        }
-    })
-
-
+        .then(response => response.json())
+        .then(data => {
+            listProducts = data
+            addDataToHtml();
+        })
 }
 
 initApp();

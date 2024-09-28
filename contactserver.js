@@ -15,8 +15,8 @@ app.post('/send-email', async (req, res) => {
         host: "sandbox.smtp.mailtrap.io",
         port: 2525,
         auth: {
-          user: "3820f2755bb1b6",
-          pass: "9f88e5e26766de"
+            user: "3820f2755bb1b6",
+            pass: "9f88e5e26766de"
         }
     });
 

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- <l -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- ==============Checkout starts here============== -->
+    <section class="Checkout py-5 my-5" id="Checkout">
+      <div class="container">
+        <div class="section_title text-center mb-5">
+          <h1 class="text-capitalize">Checkout</h1>
+        </div>
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-8">
+            <!-- Card -->
+            <div class="card bg_checkout_1 pb-5">
+              <div class="card-body">
+                <h5 class="mb-5">Billing details</h5>
+                <!-- Grid row -->
+                <div class="row">
+                  <!-- Grid column -->
+                  <div class="col-lg-6">
+                    <!-- First name -->
+                    <div class="form-group mb-0 mb-lg-4">
+                      <label for="firstName">First name</label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        class="form-control mb-0 mb-lg-2"
+                      />
+                    </div>
+                  </div>
+                  <!-- Grid column -->
+                  <!-- Grid column -->
+                  <div class="col-lg-6">
+                    <!-- Last name -->
+                    <div class="form-group md-outline">
+                      <label for="lastName">Last name</label>
+                      <input type="text" id="lastName" class="form-control" />
+                    </div>
+                  </div>
+                  <!-- Grid column -->
+                </div>
+                <!-- Grid row -->
+                <!-- Phone -->
+                <div class="form-group">
+                  <label for="form18">Phone</label>
+                  <input type="number" id="form18" class="form-control" />
+                </div>
+                <!-- Email address -->
+                <div class="form-group">
+                  <label for="form19">Email address</label>
+                  <input type="email" id="form19" class="form-control" />
+                </div>
+                <!-- Country -->
+                <div class="d-flex flex-wrap">
+                  <div class="w-100">
+                    <label>Country</label>
+                    <select class="custom-select form-group">
+                      <option value="" selected>Choose your option</option>
+                      <option value="1">Option 1</option>
+                      <option value="2">Option 2</option>
+                      <option value="3">Option 3</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- Address Part 1 -->
+                <div class="form-group">
+                  <label for="form14">Address Line 1</label>
+                  <input
+                    type="text"
+                    id="form14"
+                    placeholder="House number and
+street name"
+                    class="form-control"
+                  />
+                </div>
+                <!-- Address Part 2 -->
+                <div class="form-group">
+                  <label for="form15">Address Line 2</label>
+                  <input
+                    type="text"
+                    id="form15"
+                    placeholder="Apartment, suite, unit
+etc. (optional)"
+                    class="form-control"
+                  />
+                </div>
+                <!-- Postcode / ZIP -->
+                <div class="form-group">
+                  <label for="form16">Postcode / ZIP</label>
+                  <input type="text" id="form16" class="form-control" />
+                </div>
+                <!-- Town / City -->
+                <div class="form-group">
+                  <label for="form17">Town / City</label>
+                  <input type="text" id="form17" class="form-control" />
+                </div>
+                <!-- Additional information -->
+                <div class="form-group">
+                  <label for="form76">Additional information</label>
+                  <textarea
+                    id="form76"
+                    class="md-textarea form-control"
+                    rows="4"
+                  ></textarea>
+                </div>
+                <!-- <button class="btn btn-success"><i class="fa fa-check"></i>
+Purchase</button> -->
+                <div class="text-center">
+                  <a href="order_confirmation.html" class="btn btn-primary">
+                    <i class="fa fa-check mr-2"></i>Purchase
+                  </a>
+                </div>
+              </div>
+            </div>
+            <!-- Card -->
+          </div>
+          <!--Grid column-->
+          <!--Grid column-->
+          <div id="order-summary" class="col-lg-4 bg_checkout_1 h-25 rounded">
+            <div class="mb-3">
+                <div class="pt-4">
+                    <h5 class="mb-3">Order summary</h5>
+                    <ul id="order-items" class="list-group list-group-flush">
+                        <!-- Items will be dynamically inserted here -->
+                    </ul>
+                    <li
+                        class="list-group-item d-flex justify-content-between
+                    align-items-center border-top px-0 mb-3">
+                        <div>
+                            <strong>Total amount</strong>
+                            <strong>
+                                <p class="mb-0">(including VAT)</p>
+                            </strong>
+                        </div>
+                        <span><strong id="total-amount">₹0</strong></span>
+                    </li>
+                </div>
+            </div>
+        </div>
+          <!--Grid column-->
+        </div>
+      </div>
+    </section>
+    <!-- ==============Checkout ends here============== -->
+  </body>
+  <script src="checkout.js"></script>
+</html>
