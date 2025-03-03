@@ -5,7 +5,8 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     const message = document.getElementById('message').value;
 
     try {
-        const response = await fetch('http://localhost:3000/send-email', { // Replace this with your server URL
+        //Fetching the data
+        const response = await fetch('http://localhost:3000/send-email', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -67,13 +67,12 @@ const addToCart = (product_id) => {
         carts[positionThisProductInCart].quantity += 1;
     }
     
-    // Update the button to show 'Added to Cart'
+    // Update the button to show Added to Cart
     let productButton = document.querySelector(`.item[data-id="${product_id}"] .addCart`);
     productButton.innerText = 'Added to Cart';
     productButton.disabled = true; // Disable further clicks
     
     addCartToHtml();
-    // localStorage is removed here
 
     console.log(carts);
 }
@@ -113,7 +112,7 @@ const addCartToHtml = () => {
 
 listCartHtml.addEventListener('click', (event) => {
     let positionClick = event.target;
-    let itemElement = positionClick.closest('.item'); // Correctly finding the parent with class "item"
+    let itemElement = positionClick.closest('.item'); 
 
     if (itemElement) {
         let product_id = itemElement.dataset.id;
@@ -144,7 +143,6 @@ const changeQuantity = (product_id, type) => {
                 break;
         }
     }
-    // localStorage is removed here as well
     addCartToHtml();
 }
 
